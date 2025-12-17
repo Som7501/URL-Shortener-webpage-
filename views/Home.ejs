@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL Shortener</title>
+  </head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      color: #333;
+    }
+    form {
+      margin-bottom: 20px;
+    }
+    input[type="text"] {
+      width: 300px;
+      padding: 8px;
+      margin-right: 10px;
+    }
+    button {
+      padding: 8px 12px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+  <body>
+    <h1>URL Shortener</h1>
+
+    <% if (locals.id) { %>
+      <p>Your short URL is: 
+        <a href="http://localhost:8001/<%= id %>">http://localhost:8001/<%= id %></a>
+      </p>
+    <% } %>
+
+    <div>
+      <form action="/url" method="post">
+        <input type="text" name="url" placeholder="https://example.com" required />
+        <button type="submit">Shorten</button>
+      </form>
+    </div>
+
+    <div>
+      <% if (locals.urls && urls.length > 0) { %>
+        <table border="1" cellpadding="5" cellspacing="0">
+          <thead>
+            <tr>
+              <th>SL No.</th>
+              <th>Original URL</th>
+              <th>Shortened URL</th>
+              <th>Clicks</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% urls.forEach((url, index) => { %>
+              <tr>
+                <td><%= index + 1 %></td>
+                <td><a href="<%= url.redirectUrl %>" target="_blank"><%= url.redirectUrl %></a></td>
+                <td><a href="/<%= url.shortId %>">http://localhost:8001/<%= url.shortId %></a></td>
+                <td><%= url.visitHistory.length %></td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      <% } else { %>
+        <p>No URLs shortened yet.</p>
+      <% } %>
+    </div>
+  </body>
+</html>
