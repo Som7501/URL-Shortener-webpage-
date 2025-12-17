@@ -1,5 +1,5 @@
 # URL Shortener with Authentication
-A full-stack URL shortening application built using the Node.js, Express, and MongoDB (part of the MERN stack). This application allows users to transform long, cumbersome URLs into short, manageable codes and tracks the click analytics for each link.
+A full-stack URL shortening application built using the Node.js, Express, and MongoDB. This application allows users to transform long, cumbersome URLs into short, manageable codes and tracks the click analytics for each link.
 
 🚀 Features
 Custom Shortened Links: Generates unique 5-6 character codes for long URLs.
@@ -93,3 +93,7 @@ Custom Aliases: Allow users to choose their own short-link text.
 QR Code Generation: Generate a QR code for every shortened link.
 
 Expiration Dates: Set links to expire after a certain period.
+
+
+⭐ If you like this project, don’t forget to give it a star on GitHub!
+Happy Learning! 🎉
